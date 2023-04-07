@@ -1,0 +1,15 @@
+<h1>ブログ一覧</h1>
+
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+  </tr>
+
+<% @pictures.each do |pct| %>
+  <tr>
+    <td><%= pct.content %></td>
+    <td><%= pct.picture %></td>
+  </tr>
+<% end %>
+</table>

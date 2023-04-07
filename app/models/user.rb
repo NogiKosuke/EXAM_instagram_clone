@@ -6,4 +6,5 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   before_validation { email.downcase! }
   has_secure_password
+  has_many :pictures
 end
