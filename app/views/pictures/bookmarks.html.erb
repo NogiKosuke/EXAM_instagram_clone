@@ -2,15 +2,16 @@
 
 <table>
   <tr>
-    <th>タイトル</th>
     <th>内容</th>
+    <th>投稿者</th>
   </tr>
 
 <% @pictures.each do |pct| %>
   <% bookmark = Picture.find_by(id: pct.picture_id) %>
   <tr>
     <td><%= bookmark.content %></td>
-    <td><%= bookmark.picture %></td>
+    <td><%= "#{bookmark.user.name}" %></td>
+    <td><%= link_to '詳細', picture_path(bookmark.id) %></td>
   </tr>
 <% end %>
 

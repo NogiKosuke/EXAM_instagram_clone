@@ -11,8 +11,10 @@
     <td><%= pct.content %></td>
     <td><%= pct.picture %></td>
     <td><%= link_to '詳細', picture_path(pct.id) %></td>
-    <td><%= link_to '編集', edit_picture_path(pct.id) %></td>
-    <td><%= link_to '削除', picture_path(pct.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+    <% if current_user.id == pct.user.id %>
+      <td><%= link_to '編集', edit_picture_path(pct.id) %></td>
+      <td><%= link_to '削除', picture_path(pct.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

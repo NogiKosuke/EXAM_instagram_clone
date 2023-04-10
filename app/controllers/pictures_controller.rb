@@ -30,10 +30,17 @@ class PicturesController < ApplicationController
 
   def edit
     @picture = Picture.find(params[:id])
+    if @picture.user_id != current_user.id
+      redirect_to new_session_path
+    end
   end
 
   def update
     @picture = Picture.find(params[:id])
+    if @picture.user_id != current_user.id
+      redirect_to new_session_path
+    end
+
     if @picture.update(picture_params)
       redirect_to pictures_path
     else
@@ -43,6 +50,9 @@ class PicturesController < ApplicationController
 
   def destroy
     @picture = Picture.find(params[:id])
+    if @picture.user_id != current_user.id
+      redirect_to new_session_path
+    end
     @picture.destroy
     redirect_to pictures_path
   end
