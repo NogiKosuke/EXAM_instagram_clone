@@ -1,0 +1,16 @@
+<h1>お気に入り一覧</h1>
+
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+  </tr>
+
+<% @pictures.each do |pct| %>
+  <% bookmark = Picture.find_by(id: pct.picture_id) %>
+  <tr>
+    <td><%= bookmark.content %></td>
+    <td><%= bookmark.picture %></td>
+  </tr>
+<% end %>
+

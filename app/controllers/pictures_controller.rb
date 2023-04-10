@@ -5,6 +5,7 @@ class PicturesController < ApplicationController
 
   def show
     @picture = Picture.find(params[:id])
+    @favorite = current_user.favorites.find_by(picture_id: @picture.id)
   end
 
   def new
@@ -44,6 +45,10 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
     @picture.destroy
     redirect_to pictures_path
+  end
+
+  def bookmarks
+    @pictures = current_user.favorites
   end
 
   private
