@@ -3,10 +3,8 @@
 <p>メールアドレス: <%= @user.email %></p>
 
 <% if @user[:image] %>
-  <p>
-    <strong>Image:</strong>
-    <%= image_tag @user.image.url %>
-  </p>
+  <p>プロフィール画像　　<%= image_tag @user.image.url %></p>
 <% end %>
 
 <p><%= link_to "ユーザー画像を編集する", edit_user_path(@user.id) %></p>
+<p><%= link_to "Telegramのページへ行く", pictures_path %>
