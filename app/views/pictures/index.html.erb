@@ -1,30 +1,36 @@
-<h1>ブログ一覧</h1>
-
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-  </tr>
+<br>
+<h1>〜Telegram〜</h1>
+<br>
+<div class = 'top_menu'>
+  <p>-ようこそ！　<%= "#{current_user.name}" %>さん-</p>
+  <p><%= link_to '投稿する', new_picture_path, class: "btn btn-info" %></p>
+  <p><%= link_to 'お気に入り一覧', bookmarks_pictures_path, class: "btn btn-info" %></p>
+</div>
 
 <% @pictures.each do |pct| %>
-  <tr>
-    <td><%= pct.content %></td>
-    <td><%= pct.picture %></td>
-    <td><%= link_to '詳細', picture_path(pct.id) %></td>
-    <% if current_user.id == pct.user.id %>
-      <td><%= link_to '編集', edit_picture_path(pct.id) %></td>
-      <td><%= link_to '削除', picture_path(pct.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
-    <% end %>
-    <% unless pct.user_id == current_user.id %>
-      <% @favorite = current_user.favorites.find_by(picture_id: pct.id) %>
-      <% if @favorite.present? %>
-        <td><%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %></td>
-      <% else %>
-        <td><%= link_to 'お気に入りする', favorites_path(picture_id: pct.id), method: :post, class: 'btn btn-primary' %></td>
+  <ul class = "event clearfix">
+    <li><%= pct.content %></li>
+    <li><%= image_tag pct.picture.url %></li>
+    <div class = "clearfix menu">
+      <% unless pct.user_id == current_user.id %>
+        <% @favorite = current_user.favorites.find_by(picture_id: pct.id) %>
+        <% if @favorite.present? %>
+          <li class = "item"><%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %></li>
+        <% else %>
+        <li class = "item"><%= link_to 'お気に入りする', favorites_path(picture_id: pct.id), method: :post, class: 'btn btn-primary' %></li>
+        <% end %>
       <% end %>
-    <% end %>
-  </tr>
+      <div class = 'center'>
+        <li class = "item"><%= link_to '詳細', picture_path(pct.id), class: 'btn btn-success' %></li>
+        <% if current_user.id == pct.user.id %>
+          <li class = "item"><%= link_to '編集', edit_picture_path(pct.id), class: "btn btn-success" %></li>
+          <li class = "item"><%= link_to '削除', picture_path(pct.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: "btn btn-success" %></li>
+        <% end %>
+      </div>
+      <li class = 'sentence'>(<%= "#{pct.user.name}" %>の投稿)</li>
+    </div>
+  </ul>
 <% end %>
 </table>
-<%= link_to '投稿する', new_picture_path %>
-<%= link_to 'お気に入り一覧', bookmarks_pictures_path %>
+<br>
+<br>

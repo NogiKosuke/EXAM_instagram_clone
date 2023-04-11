@@ -1,0 +1,58 @@
+.header {
+  background-color: rgb(219, 243, 146);
+  height: 60px;
+}
+
+.header_menu {
+  font-size: 20px;
+  float: right;
+  padding: 15px;
+  margin: 0;
+}
+
+.top_menu{
+  text-align: center;
+}
+
+li {
+  list-style:none
+}
+
+h1{
+  text-align: center;
+}
+
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.item {
+  float: left;
+  margin: 10px;
+}
+
+.menu{
+  margin: 0 auto;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  background-color:aliceblue;
+}
+
+.event{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.sentence {
+  margin: 0 auto;
+  margin-left: 170px;
+}
+
+footer {
+  background-color:rgb(219, 243, 146);
+  height: 60px;
+}
